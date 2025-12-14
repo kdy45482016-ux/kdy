@@ -11,10 +11,9 @@ vector <ll> narr;
 
 bool check(ll num){
     ll sumVal = 0;
-    int mcnt = 0, temp = true;
+    int mcnt = 0;
     for(int i = 0; i < n; i++){
         if(sumVal + narr[i] > num){
-            if(mcnt >= m) temp = false;
             sumVal = 0;
             mcnt++;
         }
