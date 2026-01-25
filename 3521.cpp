@@ -1,14 +1,13 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
+
+#define size 5
 
 using namespace std;
 
-const int size = 5;
-
-vector <int> arr(5);
-int weight;
-
+vector <int> input(size);
+vector <int> value = {1, 2, 4, 8, 16};
+int number;
 int cnt = 0;
 
 int main()
@@ -16,17 +15,17 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    for(auto &a : arr) cin >> a;
-    cin >> weight;
+    for(auto &a : input) cin >> a;
+    cin >> number;
 
     for(int i = size - 1; i >= 0; i--){
-        while(weight > pow(2, i) && arr[i] != 0){
-            weight -= pow(2, i);
-            arr[i]--;
+        while(number - value[i] >= 0 && input[i] > 0){
+            number -= value[i];
+            input[i]--;
             cnt++;
         }
     }
 
-    if(weight == 0) cout << cnt << "\n";
-    else cout << "impossible" << "\n";
+    if(number == 0) cout << cnt << "\n";
+    else cout << "impossible\n";
 }
