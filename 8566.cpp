@@ -15,10 +15,7 @@ int Input(){
 }
 
 int Solve(){
-    ans.resize(n);
-    for(int i = 0; i < n; i++){
-
-    }
+\   
 }
 
 int Output(){
