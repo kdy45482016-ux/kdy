@@ -44,24 +44,18 @@ int main(){
     vector <int> cap(N + 1, C);
     int sum = 0;
 
-    for(auto &el : arr){
-        //el.Print();
-        int m = el.n;
-        
-        for(int i = el.s; i < el.e; i++){
+    for(auto e : arr){
+        int m = min(e.n, C);
+
+        for(int i = e.s; i < e.e; i++){
             m = min(m, cap[i]);
-            //cout << "\ni : " << i << "\n";
-            //cout << "m : " << m << "\n\n";
         }
 
-        for(int i = el.s; i < el.e; i++){
+        for(int i = e.s; i < e.e; i++){
             cap[i] -= m;
-            //cout << "\ni : " << i << "\n";
-            //cout << "cap : " << cap[i] << "\n\n";
         }
 
         sum += m;
-        //cout << "\nsum : " << sum << "\n\n";
     }
 
     cout << sum << "\n";
