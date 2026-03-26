@@ -3,24 +3,35 @@
 
 using namespace std;
 
-int cnt = 0;
 int n;
-vector <int> arr;
+int cnt = 0;
+string arr = "";   // pos : y * n + x
 
 vector <int> ans;
 
 bool CanRook(int pos){  // 배치 가능한지 확인, pos : y * n + x
-    //
+    if(arr[pos] == '#') return false;
+
+    for(auto e : ans){  // 이전에 배치한 룩의 위치
+        if((pos/n == e/n) || (pos%n == e%n)) return false;  // y or x 같음
+    }
+    return true;
 }
 
-void DFS(int depth){
+void DFS(int depth, int pos){
     if(depth == n){
         cnt++;
         return;
     }
 
-    for(int i = 0; i < n * n; i++){
-        //
+    for(int i = pos; i < n * n; i++){
+        if(CanRook(i)){
+            ans.push_back(i);
+            DFS(depth + 1, i + n - (i % n));
+        }
+        else continue;
+
+        ans.pop_back();
     }
 }
 
@@ -30,15 +41,14 @@ int main(){
     cout.tie(NULL);
 
     cin >> n;
-    arr.resize(n * n);
 
     for(int i = 0; i < n; i++){
         string input;
         cin >> input;
-        for(int j = 0; j < n; j++) arr[i * n + j] = (input[j] == '.') ? 0 : 1;
+        arr += input;
     }
 
-    DFS(0);
+    DFS(0, 0);
 
     cout << cnt;
 }
