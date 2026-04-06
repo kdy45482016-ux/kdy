@@ -16,16 +16,19 @@ void DFS(int row){
     }
 
     for(int col = 0; col < n; col++){
-        if(!used_col[col] && !used_dia1[col + row] && !used_dia2[row - col + n - 1]){
+        int dia1_pos = col + row;
+        int dia2_pos = row - col + n - 1;
+        
+        if(!(used_col[col] || used_dia1[dia1_pos] || used_dia2[dia2_pos])){
             used_col[col] = true;
-            used_dia1[col + row] = true;
-            used_dia2[row - col + n - 1] = true;
+            used_dia1[dia1_pos] = true;
+            used_dia2[dia2_pos] = true;
 
             DFS(row + 1);
 
             used_col[col] = false;
-            used_dia1[col + row] = false;
-            used_dia2[row - col + n - 1] = false;
+            used_dia1[dia1_pos] = false;
+            used_dia2[dia2_pos] = false;
         }
     }
 }
@@ -35,9 +38,10 @@ int main(){
     cin.tie(NULL);
 
     cin >> n;
+
     used_col.resize(n, false);
-    used_dia1.resize(n * 2, false);
-    used_dia2.resize(n * 2, false);
+    used_dia1.resize(n * 2 - 1, false);
+    used_dia2.resize(n * 2 - 1, false);
     
     DFS(0);
 
