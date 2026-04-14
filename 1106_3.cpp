@@ -15,8 +15,7 @@ struct Pos{
     }
 
     Pos operator+(const Pos& r) const{
-        Pos temp = Pos(y + r.y, x + r.x);
-        return temp;
+        return Pos(y + r.y, x + r.x);
     }
 
     bool operator==(const Pos& r) const{
