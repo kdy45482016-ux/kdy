@@ -16,7 +16,7 @@ void dfs(int index, vector <int> fnc){
 
     if(index == n){
         for(int i = 0; i < 4; i++) if(fnc[i] < min_food[i]) return;
-        if(min_cost == fnc[4]) for(int i = 0; i < min(ans.size(), visited.size()); i++) if(ans[i] < visited[i]) return;
+        if (min_cost == fnc[4] && !ans.empty() && ans < visited) return;
         min_cost = fnc[4];
         ans = visited;
         return;
