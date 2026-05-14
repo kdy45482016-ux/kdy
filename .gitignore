@@ -1,5 +1,6 @@
 /.vscode
 /.gitmessage.txt
+/.clang-format
 /a.exe
 /memo.txt
 /test.cpp
