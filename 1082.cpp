@@ -96,7 +96,7 @@ int main() {
                 if(vis[npp.y][npp.x]) continue;
                 if(is_exist(arr[npp.y][npp.x], "*X")) continue;
 
-                if(arr[npp.y][npp.x] == 'D') { // 집
+                if(arr[npp.y][npp.x] == 'D') {
                     cout << cnt + 1 << "\n";
                     return 0;
                 }
