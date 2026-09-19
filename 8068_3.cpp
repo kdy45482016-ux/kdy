@@ -13,6 +13,7 @@ int main() {
     cin >> n >> m >> q;
 
     vector<ll> arr(n + 1, 0);
+
     for(int i = 1; i <= n; i++) {
         cin >> arr[i];
     }
@@ -44,7 +45,6 @@ int main() {
         sum += dif_sum[i];
 
         memory[i] = sum - cnt * i * m;
-
         forget[i] = memory[i - 1] + arr[i] - memory[i];
     }
 
